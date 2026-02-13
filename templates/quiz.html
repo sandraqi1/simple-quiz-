@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+    <title>Python Quiz</title>
+</head>
+<body>
+     <div class="container">
+        <h1>Python Quiz</h1>
+        <form method="POST">
+            <!-- for jinja in flask templates-->
+            {% for q in questions %}
+            <p>{{loop.index}}.{{q.question}}</p>
+            <input type="text" name="q{{loop.index0}}" required>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+        {% if score is defined %}
+        <h2>Your score:{{ score }}/ {{questions|length}}</h2>
+        {% endif %}
+     </div>
+</body>
+</html>
